@@ -1,23 +1,23 @@
 AZ_FD_WAF_POLICY = {
   policy-one = {
-    resource_group_name = "rg-frontdoor"
-    sku_name            = "Premium_AzureFrontDoor"
-    enabled             = true
-    mode                = "Prevention"
-    redirect_url        = null
-    custom_block_response_status_code = 403
-    custom_block_response_body        = null
+    resource_group_name                       = "rg-frontdoor"
+    sku_name                                  = "Standard_AzureFrontDoor"
+    enabled                                   = true
+    mode                                      = "Prevention"
+    redirect_url                              = null
+    custom_block_response_status_code         = 403
+    custom_block_response_body                = null
     js_challenge_cookie_expiration_in_minutes = 30
 
     custom_rules = [
       {
-        name        = "BlockBadBots"
-        enabled     = true
-        priority    = 1
+        name                           = "BlockBadBots"
+        enabled                        = true
+        priority                       = 1
         rate_limit_duration_in_minutes = 1
         rate_limit_threshold           = 100
-        type        = "MatchRule"
-        action      = "Block"
+        type                           = "MatchRule"
+        action                         = "Block"
         match_conditions = [
           {
             match_variable     = "RequestHeader"
@@ -39,8 +39,8 @@ AZ_FD_WAF_POLICY = {
       }
     ]
 
-    log_scrubbing_enabled = false
-    scrubbing_rules = []
+    # log_scrubbing_enabled = false
+    # scrubbing_rules = []
 
     tags = {
       environment = "prod"
@@ -48,13 +48,13 @@ AZ_FD_WAF_POLICY = {
   }
 
   policy-two = {
-    resource_group_name = "rg-frontdoor"
-    sku_name            = "Standard_AzureFrontDoor"
-    enabled             = true
-    mode                = "Detection"
-    redirect_url        = null
-    custom_block_response_status_code = 403
-    custom_block_response_body        = null
+    resource_group_name                       = "rg-frontdoor"
+    sku_name                                  = "Standard_AzureFrontDoor"
+    enabled                                   = true
+    mode                                      = "Detection"
+    redirect_url                              = null
+    custom_block_response_status_code         = 403
+    custom_block_response_body                = null
     js_challenge_cookie_expiration_in_minutes = 30
 
     custom_rules = []
@@ -67,15 +67,15 @@ AZ_FD_WAF_POLICY = {
       }
     ]
 
-    log_scrubbing_enabled = true
-    scrubbing_rules = [
-      {
-        match_variable = "RequestBody"
-        operator       = "Equals"
-        selector       = "password"
-        enabled        = true
-      }
-    ]
+    # log_scrubbing_enabled = true
+    # scrubbing_rules = [
+    #   {
+    #     match_variable = "RequestBody"
+    #     operator       = "Equals"
+    #     selector       = "password"
+    #     enabled        = true
+    #   }
+    # ]
 
     tags = {
       environment = "dev"

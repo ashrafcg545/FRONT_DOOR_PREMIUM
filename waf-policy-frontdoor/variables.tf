@@ -1,1 +1,1 @@
-variable AZ_FD_WAF_POLICY {}
+variable "AZ_FD_WAF_POLICY" {}
