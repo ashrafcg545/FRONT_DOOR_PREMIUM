@@ -1,14 +1,16 @@
-resource_group_name = "my-resource-group"
-location            = "East US"
-frontdoor_name      = "my-globally-unique-frontdoor-name"
+resource_group_name = "rg-nl-tmac-acc-fd-euw-k42ok-001"
+location            = "west europe"
+frontdoor_name      = "fd-tmac-dev-euw-qz1h0-001"
 backends = {
   "app-gateway-1-backend" = {
-    application_gateway_id = "/subscriptions/your-subscription-id/resourceGroups/my-resource-group/providers/Microsoft.Network/applicationGateways/app-gateway-1"
-    host_header            = "app-gw-1.yourcompany.com"
+    application_gateway_id = "/subscriptions/262f49ca-b135-418b-99d9-b72784756c57/resourceGroups/rg-nl-tmac-acc-fd-euw-k42ok-001/providers/Microsoft.Network/applicationGateways//subscriptions/262f49ca-b135-418b-99d9-b72784756c57/resourceGroups/rg-cf-tmac-acc-euw-k42ok-001/providers/Microsoft.Network/applicationGateways/appgw-cf-tmac-acc-euw-k42ok-002"
+    host_header            = "developer.acc.tennet.eu"
+    backend_pool_name      = "appgw-backend-pool-1"
   },
   "app-gateway-2-backend" = {
-    application_gateway_id = "/subscriptions/your-subscription-id/resourceGroups/my-resource-group/providers/Microsoft.Network/applicationGateways/app-gateway-2"
-    host_header            = "app-gw-2.yourcompany.com"
+    application_gateway_id = "/subscriptions/262f49ca-b135-418b-99d9-b72784756c57/resourceGroups/rg-nl-tmac-acc-fd-euw-k42ok-001/providers/Microsoft.Network/applicationGateways//subscriptions/262f49ca-b135-418b-99d9-b72784756c57/resourceGroups/rg-cf-tmac-acc-euw-k42ok-001/providers/Microsoft.Network/applicationGateways/appgw-cf-tmac-acc-euw-k42ok-002"
+    host_header            = "identity.acc.tennet.eu"
+    backend_pool_name      = "appgw-backend-pool-2"
   }
 }
 backend_pool_settings = {
@@ -29,14 +31,14 @@ backend_pool_settings = {
 }
 frontend_endpoints = {
   "app1-endpoint" = {
-    host_name                          = "app1.yourcompany.com"
+    host_name                          = "developer.acc.tennet.eu"
     web_application_firewall_policy_id = ""
-    certificate_key_vault_secret_id    = "/subscriptions/your-subscription-id/resourceGroups/my-resource-group/providers/Microsoft.KeyVault/vaults/my-key-vault/secrets/my-ssl-cert-1/my-cert-version"
+    certificate_key_vault_secret_id    = "/subscriptions/7445369d-e7e5-4ba8-b4e0-a3da378def4c/resourceGroups/rg-tmac-acc-euw-17dei-003/providers/Microsoft.KeyVault/vaults/kvtmacacceuw17dei001/secrets/developer-acc-tennet-eu"
   },
   "app2-endpoint" = {
-    host_name                          = "app2.yourcompany.com"
+    host_name                          = "identity.acc.tennet.eu"
     web_application_firewall_policy_id = ""
-    certificate_key_vault_secret_id    = "/subscriptions/your-subscription-id/resourceGroups/my-resource-group/providers/Microsoft.KeyVault/vaults/my-key-vault/secrets/my-ssl-cert-2/my-cert-version"
+    certificate_key_vault_secret_id    = "/subscriptions/7445369d-e7e5-4ba8-b4e0-a3da378def4c/resourceGroups/rg-tmac-acc-euw-17dei-003/providers/Microsoft.KeyVault/vaults/kvtmacacceuw17dei001/secrets/developer-acc-tennet-eu"
   }
 }
 routing_rules = {
